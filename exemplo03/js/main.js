@@ -1,10 +1,12 @@
-import { enviar, buscar } from "./api/api.js";
+import { enviar, buscar, remover } from "./api/api.js";
 import lerDadosDoFormulario from "./ler.js";
 import imprimirDadosDaLista from "./imprimir.js";
 
 const produto = document.getElementById("produto");
 const preco = document.getElementById("preco");
+const validade = document.getElementById("validade");
 const botao = document.getElementById("botaoEnviar");
+
 
 window.addEventListener('DOMContentLoaded', async () => {
     const vetor = await buscar();
@@ -16,11 +18,32 @@ botao.addEventListener("click", (event) => {
     adicionar();
 });
 
+
+
 botao.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         adicionar();
     }
 });
+
+
+window.addEventListener('DOMContentLoaded', async () => {
+  async function fnremover(id) {
+
+    if (id) {
+        await remover(id);
+
+        atualizarLista(vetor);
+    } else
+        alert("Dados não enviados!");
+}
+
+ function atualizar(id) {
+    alert("Remover clicado");
+}
+});
+
+
 
 async function adicionar() {
     const dados = lerDadosDoFormulario();

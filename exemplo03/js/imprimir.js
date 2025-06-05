@@ -14,7 +14,10 @@
 function imprimir(json){
   return `<div class="id">ID: ${json.id}</div> 
           <div class="nome">Produto: ${json.produto}</div> 
-          <div class="nascimento">Preço: ${json.preco}</div>`;
+          <div class="nascimento">Preço: ${json.preco}</div>
+          <div class="validade">Data de Validade: ${json.validade}</div>
+          <button onclick="fnremover(${json.id})">Remover</button>
+<button onclick="atualizar(${json.id})">Atualizar</button>`;
 }
 
 export default imprimir;

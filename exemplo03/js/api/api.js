@@ -1,4 +1,4 @@
-const url = "https://01c72ea2-dc83-4f76-b4e6-f998346028e2-00-1fmk7t8gu8uk4.picard.replit.dev/";
+const url = "https://36c6eb90-6391-418d-9b7c-5dea598d31fd-00-2biqs6wk06s8r.kirk.replit.dev/";
 const urlProdutos = url + "produtos";
 
 /*
@@ -28,6 +28,24 @@ export async function enviar(dados) {
     return await resposta.json();
   } catch (erro) {
     console.error('Erro ao enviar dados:', erro);
+    throw erro;
+  }
+}
+
+export async function remover(id) {
+  try {
+    const resposta = await fetch(`${urlProdutos}/${id}`, {
+      method: 'DELETE',
+      headers: { "Content-type": "application/json; charset=UTF-8" }
+    });
+
+    if (!resposta.ok) {
+      throw new Error('Erro ao deletar o item!');
+    }
+
+    return await resposta.json();
+  } catch (erro) {
+    console.error('Erro ao deletar:', erro);
     throw erro;
   }
 }
